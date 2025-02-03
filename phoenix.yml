@@ -1,0 +1,31 @@
+sur:
+  pousser:
+    succursales:
+      - principal
+  pull_request:
+    succursales:
+      - principal
+
+emplois:
+  construire:
+
+    fonctionne sur : ubuntu-latest
+
+    stratégie:
+      matrice:
+        version du nœud : [20.x]
+
+    mesures:
+    - nom : dépôt de paiement
+      utilisations : actions/checkout@v3
+
+    - nom : Configurer Node.js
+      utilisations : actions/setup-node@v3
+      avec:
+        version-nœud : ${{ matrix.node-version }}
+
+    - nom : Installer les dépendances
+      exécuter : npm install
+
+    - nom : Démarrer l'application
+      exécuter : npm start
